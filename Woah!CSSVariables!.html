@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoped CSS Variables and JS</title>
+
+    <style>
+        /* Create variable */
+        :root {
+            --base: #ffc600;
+            --spacing: 10px;
+            --blur: 10px;
+        }
+
+        img {
+            padding: var(--spacing);
+            background: var(--base);
+            filter: blur(var(--blur));
+        }
+
+        body {
+            text-align: center;
+            background-color: #193549;
+            color: white;
+            font-family: 'helvetica nenu', sans-serif;
+            font-weight: 100;
+            font-size: 50px;
+        }
+
+        .h1 {
+            color: var(--base);
+        }
+
+        .controls {
+            margin-bottom: 50px;
+        }
+
+        .image {
+            max-height: 300px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2 style="--base: #BADA55">Update CSS Variable with
+        <span class='h1'>JS</span>
+    </h2>
+
+    <div class='controls'>
+        <label for="spacing">Spacing:</label>
+        <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px" data-coderName="Talha">
+
+        <label for="blur">Blur:</label>
+        <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+        <label for=' base'>Base Color</label>
+        <input type="color" name="base" value="#ffc600" style="width: 50px;height: 50px;">
+    </div>
+
+    <img src="https://images3.alphacoders.com/823/thumb-1920-82317.jpg" class="image">
+</body>
+
+<script>
+    const inputs = document.querySelectorAll('.controls input');
+    console.log(inputs)
+
+    function handleUpdate() {
+        console.log(this.value);
+        console.log(this.dataset);
+        const suffix = this.dataset.sizing || '';
+        console.log(suffix)
+        console.log(this.name);
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+    }
+
+    inputs.forEach(input => input.addEventListener('change', handleUpdate))
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
+</script>
+
+</html>
