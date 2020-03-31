@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p contenteditable="true">Hello Pakistan.</p>
+</body>
+<script>
+    const people = [
+        { name: "Kashan", year: 1997 },
+        { name: "Usama", year: 1998 },
+        { name: "Talha", year: 1996 },
+        { name: "Noman", year: 1999 },
+        { name: "Mohsin", year: 1997 },
+        { name: "Samad", year: 1999 },
+    ];
+
+    const comments = [
+        { developer: 'React Netive', id: 123456 },
+        { developer: 'React ', id: 213456 },
+        { developer: 'JavaScript', id: 321456 },
+        { developer: 'Word Press', id: 432156 },
+        { developer: 'C++', id: 543216 },
+        { developer: 'Java', id: 654321 },
+    ];
+
+    const addNewComment1 = { developer: 'Paython', id: 7654321 }
+    const addNewComment2 = { developer: 'NodeJs', id: 87654321 }
+
+
+    // // Some And Every Checks
+    // // Some always return is True OR False.
+    // // Array.prototype.some() // is at least on person 19? 
+    // // Long Way:
+    // const isAdult = people.some((person) => {
+    //     const currentYear = (new Date()).getFullYear();
+    //     if (currentYear - person.year >= 19) {
+    //         return true // Answer return is = true
+    //         // return person // Answer return is = true 
+    //     }
+    // })
+    // console.log(isAdult) // Answer is = true
+
+    // // Short Way:
+    // const isAdult = people.some(person => (new Date()).
+    //     getFullYear() - person.year >= 19) // Answer return is = true 
+    // console.log(isAdult) // Answer is = true
+
+
+    // // Array.prototype.every() //
+    // // What is difference between some() OR every() ???? 
+
+    // const allAdults = people.every(person => ((new Date()).
+    //     getFullYear()) - person.year >= 19) // Answer return is = true 
+    // console.log(allAdults) // Answer is = true
+
+    // Array.prototype.find() //
+
+    const CommentFind = comments.find(commit => commit.id === 213456);
+    console.log({ CommentFind });
+
+    // Array.prototype.findIndex()
+    // Find yhe comment with this ID
+    // Delete the comment with the ID of 321456
+
+    const indexFind = comments.findIndex(comment => comment.id === 321456);
+    console.log({ indexFind });
+
+    // Array.prototype.splice()
+    // Copy And Add Item in the Array.
+    // In the 1st parameter he take the started index Of the copy. // Kaha Se Start Karna He. // Kis Index Ke Bad New Items Add Karna He. 
+    // In the 2nd parameter he take the ended index of the copy. // Kaha Tak Copy Karna He // Kitne Items Copy Karna He.
+    // In the 3rd, 4th.... parameter he take the Add.
+
+    const copyCommentWithSplice = comments.splice(indexFind, 2)
+    console.log({ copyCommentWithSplice });
+
+    // All Commeents and add new items at end
+    // let addCommentAtEndWithSplice = comments
+    // addCommentAtEndWithSplice.splice()
+
+    // All Commeents and add new items at Middle of an Array.
+    let addCommentAtMiddleWithSplice = comments
+    addCommentAtMiddleWithSplice.splice(indexFind, 0, addNewComment1, addNewComment2)
+    console.log({ addCommentAtMiddleWithSplice })
+
+
+
+
+</script>
+
+</html>
